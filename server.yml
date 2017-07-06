@@ -1,0 +1,14 @@
+- name: Run with inline v2 compose
+  hosts: web
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - docker_service:
+        project_name: test
+        definition:
+          version: '2'
+          services:
+            test:
+              image: mprather1/node-test
+              ports:
+                - "8000:8000"
